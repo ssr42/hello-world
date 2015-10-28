@@ -12,4 +12,10 @@ gitTag in ThisBuild := Process("git rev-parse --abbrev-ref HEAD").lines.head
 // package the fat-jar with the same name always, lsp-subsystem-0.1-deploy.jar
 assemblyJarName in assembly := "hello-" + gitTag.value + ".jar"
 
-
+assembly <<= assembly map { (asm) =>
+  val src = asm
+  val target = new java.io.File("./hello.jar")
+  println("Copying " + src + " to " + target)
+  IO.copy(List(src -> target))
+  target
+}
