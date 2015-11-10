@@ -4,7 +4,7 @@ object HelloWorld {
       if (args.length > 0) {
         args(0)
       } else {
-        "World"
+        "World2"
       }
     println(s"Hello ${name}!")
   }
